@@ -16,6 +16,20 @@ namespace my_books.Controllers
             _publishersService = publishersService;
         }
 
+        [HttpGet("get-all-publishers")]
+        public IActionResult GetAllPublishers(string sortBy, string searchString, int pageNumber)
+        {
+            try
+            {
+                var res = _publishersService.GetAllPublishers(sortBy, searchString, pageNumber);
+                return Ok(res);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Sorry, we could not load the publishers");
+            }
+        }
+
         [HttpPost("add-publisher")]
         public IActionResult AddPublisher([FromBody] PublisherVM publisher)
         {
@@ -24,14 +38,14 @@ namespace my_books.Controllers
                 var res = _publishersService.AddPublisher(publisher);
                 return Created(nameof(AddPublisher), res);
             }
-            catch(PublisherNameException ex)
+            catch (PublisherNameException ex)
             {
                 return BadRequest($"{ex.Message}, Publisher Name: {ex.PublisherName}");
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }          
+            }
         }
 
         [HttpGet("get-publisher-by-id/{publisherId}")]
@@ -53,7 +67,7 @@ namespace my_books.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }            
+            }
         }
 
         [HttpGet("get-publisher-books-with-authors/{publisherId}")]
@@ -67,7 +81,7 @@ namespace my_books.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }            
+            }
         }
 
         [HttpDelete("delete-publisher-by-id/{publisherId}")]
