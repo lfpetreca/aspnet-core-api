@@ -25,7 +25,6 @@ namespace my_books.Data
                             DateRead = DateTime.Now.AddDays(-11),
                             Rate = 4,
                             Genre = "Biography",
-                            Author = "1st Author",
                             CoverUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAcGXw78cemGGdEZXc0xWD8b6dURiojmB3oA&usqp=CAU",
                             DateAdded = DateTime.Now,
 
@@ -36,7 +35,6 @@ namespace my_books.Data
                             Description = "2nd Book Description",
                             IsRead = false,                            
                             Genre = "Biography",
-                            Author = "1st Author",
                             CoverUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAcGXw78cemGGdEZXc0xWD8b6dURiojmB3oA&usqp=CAU",
                             DateAdded = DateTime.Now,
 
@@ -49,7 +47,6 @@ namespace my_books.Data
                             DateRead = DateTime.Now.AddDays(-11),
                             Rate = 4,
                             Genre = "Biography",
-                            Author = "2nd Author",
                             CoverUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAcGXw78cemGGdEZXc0xWD8b6dURiojmB3oA&usqp=CAU",
                             DateAdded = DateTime.Now,
 
