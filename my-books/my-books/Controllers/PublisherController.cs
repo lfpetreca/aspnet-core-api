@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using my_books.Data.Services;
 using my_books.Data.ViewModels;
 using my_books.Exceptions;
@@ -11,9 +12,11 @@ namespace my_books.Controllers
     public class PublisherController : ControllerBase
     {
         private PublishersService _publishersService;
-        public PublisherController(PublishersService publishersService)
+        private readonly ILogger<PublisherController> _logger;
+        public PublisherController(PublishersService publishersService, ILogger<PublisherController> logger)
         {
             _publishersService = publishersService;
+            _logger = logger;
         }
 
         [HttpGet("get-all-publishers")]

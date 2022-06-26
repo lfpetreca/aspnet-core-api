@@ -1,0 +1,32 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using my_books.Data.Services;
+using System;
+
+namespace my_books.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LogsController : ControllerBase
+    {
+        private LogsService _logsService;
+        public LogsController(LogsService logsService)
+        {
+            _logsService = logsService;
+        }
+
+        [HttpGet("get-all-logs-from-db")]
+        public IActionResult GetAllLogsFromDB()
+        {
+            try
+            {
+                var allLogs = _logsService.GetAllLogsFromDB();
+                return Ok(allLogs);
+            }
+            catch (Exception)
+            {
+
+                return BadRequest("Could not return logs from database");
+            }
+        }
+    }
+}
